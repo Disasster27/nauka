@@ -55,29 +55,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         house: document.querySelector('input[name="house"]').value.trim(), 
                         apart: document.querySelector('input[name="apart"]').value.trim(),
                     },
+                    mark: document.querySelector('input[name="mark"]').checked,
                 }; 
         
-                let per = new Person(personInfo, grid);
-                console.log(per)
+                let person = new Person(personInfo, grid);
                 this.counter++;
-                this.allPerson[per.id] = per;
-                console.log('this.allPerson:', this.allPerson)
+                this.allPerson[per.id] = person;
         };
         removePerson () {
             this.selectedElement.remove();
         };
         editPerson () {
-            document.querySelector('.blackout').classList.remove('invisible');
+            const blackout = document.querySelector('.blackout');
+            blackout.classList.remove('invisible');
             let item = this.allPerson[this.selectedElement.getAttribute('data-id')];
-            document.querySelector('input[name="name"]').value = item.name;
-            document.querySelector('input[name="family"]').value = item.family;
-            document.querySelector('input[name="date"]').value;
-            document.querySelector('select[name="position"]').value;
-            document.querySelector('input[name="remote"]').checked;
-            document.querySelector('input[name="city"]').value = item.address.city; 
-            document.querySelector('input[name="street"]').value = item.address.street; 
-            document.querySelector('input[name="house"]').value = item.address.house; 
-            document.querySelector('input[name="apart"]').value = item.address.apart;
+            blackout.querySelector('input[name="name"]').value = item.name;
+            blackout.querySelector('input[name="family"]').value = item.family;
+            blackout.querySelector('input[name="date"]').value = item.dateOfBirth;
+            blackout.querySelector('select[name="position"]').value = item.position;
+            blackout.querySelector('input[name="remote"]').checked = item.isRemote;
+            blackout.querySelector('input[name="city"]').value = item.address.city; 
+            blackout.querySelector('input[name="street"]').value = item.address.street; 
+            blackout.querySelector('input[name="house"]').value = item.address.house; 
+            blackout.querySelector('input[name="apart"]').value = item.address.apart;
+            blackout.querySelector('input[name="mark"]').checked = item.isMark;
             
         };
 
@@ -92,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             this.family = personInfo.family;
             this.dateOfBirth = personInfo.date;
             this.position = personInfo.position;
-            this.isRemote = personInfo.isRemote;
+            this.isRemote = personInfo.remote;
             this.address = personInfo.address;
-            this.isMark = personInfo.isMark;  
+            this.isMark = personInfo.mark;  
             this.element = null;
             this.render();
         };
@@ -144,5 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const grid = new PersonGrid();
+    document.querySelector('.photo__button').addEventListener('click', e => {
+        console.log(document.querySelector('input[type="file"]').files[0].name);
+        document.querySelector('.photo__img').src = `./images/${document.querySelector('input[type="file"]').files[0].name}` ;
+
+    })
+    
 
 });
