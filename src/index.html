@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/nauka.ico" type="image/icon">
+    <title>Nauka</title>
+</head>
+<body>
+    <div class="main">
+        <div class="search">
+            <form action="">
+                <input type="text" class="search__input" placeholder="будет плюсом">
+                <button class="search__button">&#128269;</button>
+            </form>
+        </div>
+        <div class="interaction">
+            <div class="button interaction__add">Добавить</div>
+            <div class="button interaction__edit">Редактировать</div>
+            <div class="button interaction__delete">Удалить</div>
+        </div>
+        <div class="grid">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Превью</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Дата рождения</th>
+                        <th>Возраст</th>
+                        <th>Должность</th>
+                        <th>Удалённая работа</th>
+                        <th>Адрес проживания</th>
+                    </tr>
+                    <tr>
+                        <td><img src="./images/pyotr-1.jpg" alt=""></td>
+                        <td class="bord">Пётр</td>
+                        <td>Романов</td>
+                        <td>30.05.1672</td>
+                        <td>33</td>
+                        <td>Император</td>
+                        <td><input type="checkbox"></td>
+                        <td>Санкт-Петербург</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="blackout invisible">
+        <div class="modal">
+            <div class="modal__title">
+                Добавление
+            </div>
+            <div class="modal__main">
+                <div class="person">
+                    <div class="person__photo photo">
+                        <img src="./images/123.jpg" alt="Photo" class="photo__img">
+                        <div class="button photo__button">Загрузить фото</div>
+                    </div>
+                    <div class="person__info">
+                        <form id="person" class="modal__form" action="">
+                            <input required class="person__input" type="text" name="name" placeholder="Имя">
+                            <input required class="person__input" type="text" name="family" placeholder="Фамилия">
+                            <input required class="person__input modal__date" name="date" type="date">
+                            <select class="person__input" id="position" name="position">
+                                <option disabled selected>Указать должность</option>
+                                <option value="Должность 1">Должность 1</option>
+                                <option value="Должность 2">Должность 2</option>
+                                <option value="Должность 3">Должность 3</option>
+                                <option value="Император">Император</option>
+                            </select>
+                            <label class="modal__label"><input class="person__input checkbox" name="remote" type="checkbox">Удалёнка</label>
+                            <input required class="person__input" type="text" name="city" placeholder="Город">
+                            <input class="person__input" type="text" name="street" placeholder="Улица">
+                            <input class="person__input" type="text" name="house" placeholder="Дом">
+                            <input class="person__input" type="text" name="apart" placeholder="Квартира">
+                            <label class="modal__label"><input class="person__input checkbox" name="mark" type="checkbox">Отметить</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="color">
+                    <label for="">
+                        <input type="color" list="colorList" value="#eef5ee">
+                        <datalist id="colorList">
+                            <option value="#FFC0CB" label="Pink">
+                            <option value="#FF1493" label="DeepPink">
+                            <option value="#C71585" label="MediumVioletRed">
+                            <option value="#7B68EE" label="MediumSlateBlue ">
+                            <option value="#663399" label="RebeccaPurple">
+                            <option value="#FFA07A" label="LightSalmon">
+                            <option value="#6B8E23" label="OliveDrab">
+                            <option value="#FFA500" label="Orange">
+                            <option value="#FFD700" label="Gold">
+                            <option value="#FFE4B5" label="Moccasin ">
+                            <option value="#90EE90" label="LightGreen">
+                            <option value="#7FFFD4" label="Aquamarine"> 
+                            <option value="#2E8B57" label="SeaGreen">
+                            <option value="#87CEFA" label="LightSkyBlue">
+                            <option value="#FF7F50" label="Coral">
+                            <option value="#FF0000" label="Red">
+                            <option value="#FF6347" label="Tomato">
+                            <option value="#4169E1" label="RoyalBlue">  
+                            <option value="#000000" label="White"> 
+                            <!-- <option value="#abefbc" label="PaleGreen ">     -->
+                            <option value="#eef5ee" label="VeryPaleGreen "> 
+                        </datalist>Задать цвет
+                    </label>
+                </div>
+                <div class="control">
+                    <button class="button control__delete">Удалить</button>
+                    <button type="button" class="button control__save">Сохранить</button>
+                    <button class="button control__cancel">Отмена</button>
+                </div>    
+            </div>
+            
+        </div>
+    </div>
+    <!-- <script src="./main.js"></script> -->
+</body>
+</html>
