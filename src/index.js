@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addEvent () {
             document.querySelector('.control__save').addEventListener('click', () => {
                 document.querySelector('.blackout').classList.add('invisible');
-                this.addRov ();
+                this.addRow ();
             });
             document.querySelectorAll('tr').forEach(item => {
                 item.addEventListener('click', e => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.editPerson();
             });
         };
-        addRov () {
+        addRow () {
                 const personInfo = {
                     img: ava,
                     name: document.querySelector('input[name="name"]').value.trim(),
@@ -59,13 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
         
                 let per = new Person(personInfo, grid);
                 console.log(per)
+                this.counter++;
+                this.allPerson[per.id] = per;
+                console.log('this.allPerson:', this.allPerson)
         };
         removePerson () {
             this.selectedElement.remove();
         };
         editPerson () {
             document.querySelector('.blackout').classList.remove('invisible');
-            console.log('this.selectedElement:', this.selectedElement)
+            let item = this.allPerson[this.selectedElement.getAttribute('data-id')];
+            document.querySelector('input[name="name"]').value = item.name;
+            document.querySelector('input[name="family"]').value = item.family;
+            document.querySelector('input[name="date"]').value;
+            document.querySelector('select[name="position"]').value;
+            document.querySelector('input[name="remote"]').checked;
+            document.querySelector('input[name="city"]').value = item.address.city; 
+            document.querySelector('input[name="street"]').value = item.address.street; 
+            document.querySelector('input[name="house"]').value = item.address.house; 
+            document.querySelector('input[name="apart"]').value = item.address.apart;
+            
         };
 
     };
@@ -73,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     class Person {
         constructor (personInfo, grid) {
             this.grid = grid;
-            this.id = 1;
+            this.id = grid.counter;
             this.img = personInfo.img;
             this.name = personInfo.name;
             this.family = personInfo.family;
@@ -88,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render () {
             const table = document.querySelector('tbody');
             const tableRow = document.createElement('tr');
+            tableRow.setAttribute('data-id', this.id)
             tableRow.innerHTML = `<td><img src="${this.img} " alt=""></td>
                                     <td class="bord">${this.name} </td>
                                     <td>${this.family} </td>
